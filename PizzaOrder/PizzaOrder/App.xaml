@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:PizzaOrder"
              StartupUri="View/EntryWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="NameLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontStyle" Value="Oblique"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontWeight" Value="Heavy"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            
+        </Style>
     </Application.Resources>
 </Application>

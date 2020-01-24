@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resourсes\BBQ.png" />
+    <None Remove="Resourсes\California.png" />
     <None Remove="Resourсes\CheesePepperoni.png" />
-    <None Remove="Resourсes\HurricaneOfTaste.png" />
-    <None Remove="Resourсes\PepperoniClassic.png" />
-    <None Remove="Resourсes\Sicilian.png" />
-    <None Remove="Resourсes\SpicyBeef.png" />
-    <None Remove="Resourсes\TomatoPepperoni.png" />
-    <None Remove="Resourсes\VeganParty.png" />
+    <None Remove="Resourсes\Hawaii.png" />
+    <None Remove="Resourсes\Margarita.png" />
+    <None Remove="Resourсes\NewYork.png" />
+    <None Remove="Resourсes\Pepperoni.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,13 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resourсes\BBQ.png" />
+    <Resource Include="Resourсes\California.png" />
     <Resource Include="Resourсes\CheesePepperoni.png" />
-    <Resource Include="Resourсes\HurricaneOfTaste.png" />
-    <Resource Include="Resourсes\PepperoniClassic.png" />
-    <Resource Include="Resourсes\Sicilian.png" />
-    <Resource Include="Resourсes\SpicyBeef.png" />
-    <Resource Include="Resourсes\TomatoPepperoni.png" />
-    <Resource Include="Resourсes\VeganParty.png" />
+    <Resource Include="Resourсes\Hawaii.png" />
+    <Resource Include="Resourсes\Margarita.png" />
+    <Resource Include="Resourсes\NewYork.png" />
+    <Resource Include="Resourсes\Pepperoni.png" />
   </ItemGroup>
 
 </Project>

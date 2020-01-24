@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="EntryWindow" WindowState="Maximized"
         Background="CornflowerBlue">
+    
+
+   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -19,25 +22,77 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Image x:Name="cheesePepperoni" Grid.Column="0" Grid.Row="0"
-               Source="\Resourсes\CheesePepperoni.png" Visibility="Visible"/>
-        <Image x:Name="hurricaneOfTaste" Grid.Column="0" Grid.Row="1"
-               Source="\Resourсes\HurricaneOfTaste.png" Visibility="Visible"/>
-        <Image x:Name="pepperoniClassic" Grid.Column="0" Grid.Row="2"
-               Source="\Resourсes\PepperoniClassic.png" Visibility="Visible"/>
-        <Image x:Name="sicilian" Grid.Column="0" Grid.Row="3"
-               Source="\Resourсes\Sicilian.png" Visibility="Visible"/>
-        <Image x:Name="spicyBeef" Grid.Column="0" Grid.Row="4"
-               Source="\Resourсes\SpicyBeef.png" Visibility="Visible"/>
-        <Image x:Name="tomatoPepperoni" Grid.Column="0" Grid.Row="5"
-               Source="\Resourсes\TomatoPepperoni.png" Visibility="Visible"/>
-        <Image x:Name="veganParty" Grid.Column="0" Grid.Row="6"
-               Source="\Resourсes\VeganParty.png" Visibility="Visible"/>
+        <Image x:Name="BBQ" Grid.Column="0" Grid.Row="0"
+               Source="\Resourсes\BBQ.png" HorizontalAlignment="Left"  >
+            <Image.ToolTip>
+                <ToolTip Width="700" Height="700" Background="Transparent" 
+                         BorderBrush="Transparent" Placement="Center">
+                        <Image Source="\Resourсes\BBQ.png" />
+                </ToolTip>
+            </Image.ToolTip>
+        </Image>
+        <Image x:Name="hawaii" Grid.Column="0" Grid.Row="1"
+               Source="\Resourсes\Hawaii.png" HorizontalAlignment="Left">
+        <Image.ToolTip>
+            <ToolTip Width="700" Height="700" Background="Transparent" 
+                         BorderBrush="Transparent" Placement="Center">
+                <Image Source="\Resourсes\Hawaii.png" />
+            </ToolTip>
+        </Image.ToolTip>
+        </Image>
+        <Image x:Name="margarita" Grid.Column="0" Grid.Row="2"
+               Source="\Resourсes\Margarita.png" HorizontalAlignment="Left">
+            <Image.ToolTip>
+                <ToolTip Width="700" Height="700" Background="Transparent" 
+                         BorderBrush="Transparent" Placement="Center">
+                    <Image Source="\Resourсes\Margarita.png" />
+                </ToolTip>
+            </Image.ToolTip>
+        </Image>
+        <Image x:Name="newyork" Grid.Column="0" Grid.Row="3"
+               Source="\Resourсes\NewYork.png" HorizontalAlignment="Left">
+            <Image.ToolTip>
+                <ToolTip Width="700" Height="700" Background="Transparent" 
+                         BorderBrush="Transparent" Placement="Center">
+                    <Image Source="\Resourсes\NewYork.png" />
+                </ToolTip>
+            </Image.ToolTip>
+        </Image>
+        <Image x:Name="pepperoni" Grid.Column="0" Grid.Row="4"
+               Source="\Resourсes\Pepperoni.png" HorizontalAlignment="Left">
+            <Image.ToolTip>
+                <ToolTip Width="700" Height="700" Background="Transparent" 
+                         BorderBrush="Transparent" Placement="Center">
+                    <Image Source="\Resourсes\Pepperoni.png" />
+                </ToolTip>
+            </Image.ToolTip>
+        </Image>
+        <Image x:Name="california" Grid.Column="0" Grid.Row="5"
+               Source="\Resourсes\California.png" HorizontalAlignment="Left">
+            <Image.ToolTip>
+                <ToolTip Width="700" Height="700" Background="Transparent" 
+                         BorderBrush="Transparent" Placement="Center">
+                    <Image Source="\Resourсes\California.png" />
+                </ToolTip>
+            </Image.ToolTip>
+        </Image>
+        <Image x:Name="cheesepepperoni" Grid.Column="0" Grid.Row="6"
+               Source="\Resourсes\CheesePepperoni.png" HorizontalAlignment="Left">
+            <Image.ToolTip>
+                <ToolTip Width="700" Height="700" Background="Transparent" 
+                         BorderBrush="Transparent" Placement="Center">
+                    <Image Source="\Resourсes\CheesePepperoni.png" />
+                </ToolTip>
+            </Image.ToolTip>
+        </Image>
+        <Label Grid.Column="1" Grid.Row="0" Content="BBQ Pizza" 
+               Style= "{StaticResource NameLabelStyle}"/>
+
     </Grid>
 </Window>
