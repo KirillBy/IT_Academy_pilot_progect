@@ -5,9 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaOrder.View"
         mc:Ignorable="d"
-        Title="EntryWindow" Height="450" Width="800"
+        Title="EntryWindow" WindowState="Maximized"
         Background="CornflowerBlue">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image x:Name="cheesePepperoni" Grid.Column="0" Grid.Row="0"
+               Source="\Resourсes\CheesePepperoni.png" Visibility="Visible"/>
+        <Image x:Name="hurricaneOfTaste" Grid.Column="0" Grid.Row="1"
+               Source="\Resourсes\HurricaneOfTaste.png" Visibility="Visible"/>
+        <Image x:Name="pepperoniClassic" Grid.Column="0" Grid.Row="2"
+               Source="\Resourсes\PepperoniClassic.png" Visibility="Visible"/>
+        <Image x:Name="sicilian" Grid.Column="0" Grid.Row="3"
+               Source="\Resourсes\Sicilian.png" Visibility="Visible"/>
+        <Image x:Name="spicyBeef" Grid.Column="0" Grid.Row="4"
+               Source="\Resourсes\SpicyBeef.png" Visibility="Visible"/>
+        <Image x:Name="tomatoPepperoni" Grid.Column="0" Grid.Row="5"
+               Source="\Resourсes\TomatoPepperoni.png" Visibility="Visible"/>
+        <Image x:Name="veganParty" Grid.Column="0" Grid.Row="6"
+               Source="\Resourсes\VeganParty.png" Visibility="Visible"/>
     </Grid>
 </Window>

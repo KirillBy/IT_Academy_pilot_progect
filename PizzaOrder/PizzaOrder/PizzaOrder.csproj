@@ -7,7 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resourсes\CheesePepperoni.png" />
+    <None Remove="Resourсes\HurricaneOfTaste.png" />
+    <None Remove="Resourсes\PepperoniClassic.png" />
+    <None Remove="Resourсes\Sicilian.png" />
+    <None Remove="Resourсes\SpicyBeef.png" />
+    <None Remove="Resourсes\TomatoPepperoni.png" />
+    <None Remove="Resourсes\VeganParty.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ModelView\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resourсes\CheesePepperoni.png" />
+    <Resource Include="Resourсes\HurricaneOfTaste.png" />
+    <Resource Include="Resourсes\PepperoniClassic.png" />
+    <Resource Include="Resourсes\Sicilian.png" />
+    <Resource Include="Resourсes\SpicyBeef.png" />
+    <Resource Include="Resourсes\TomatoPepperoni.png" />
+    <Resource Include="Resourсes\VeganParty.png" />
   </ItemGroup>
 
 </Project>
