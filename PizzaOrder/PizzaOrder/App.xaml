@@ -11,7 +11,13 @@
             <Setter Property="FontWeight" Value="Heavy"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            
+        </Style>
+        <Style x:Key="ImageToolTip" TargetType="ToolTip">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Placement" Value="Center"/>
+            <Setter Property="Width" Value="700"/>
+            <Setter Property="Height" Value="700"/>
         </Style>
     </Application.Resources>
 </Application>
