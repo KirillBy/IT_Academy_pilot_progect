@@ -21,18 +21,18 @@ namespace PizzaAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Pizza> contacts;
+        List<Pizza> pizzasList;
         public MainWindow()
         {
 
             InitializeComponent();
-            contacts = new List<Pizza>();
+            pizzasList = new List<Pizza>();
             ReadDataBase();
         }
 
-        private void newContactButton_Click(object sender, RoutedEventArgs e)
+        private void newPizzaButton_Click(object sender, RoutedEventArgs e)
         {
-            NewContactWindow newContactWindow = new NewContactWindow();
+            NewPizzaWindow newContactWindow = new NewPizzaWindow();
             newContactWindow.ShowDialog();
 
             ReadDataBase();
@@ -43,16 +43,16 @@ namespace PizzaAdmin
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.databasePath))
             {
                 conn.CreateTable<Pizza>();
-                contacts = conn.Table<Pizza>().ToList().OrderBy(c => c.Name).ToList();
+                pizzasList = conn.Table<Pizza>().ToList().OrderBy(c => c.Name).ToList();
             }
-            if (contacts != null)
+            if (pizzasList != null)
             {
                 //foreach (var c in contacts)
                 //    contactListView.Items.Add(new ListViewItem()
                 //    {
                 //        Content = c
                 //    }) ;
-                contactListView.ItemsSource = contacts;
+                contactListView.ItemsSource = pizzasList;
             }
         }
 
@@ -60,7 +60,7 @@ namespace PizzaAdmin
         {
             TextBox searchTextBox = sender as TextBox;
             //var filteredName = contacts.Where(c => c.Name.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
-            var filteredName = (from c2 in contacts
+            var filteredName = (from c2 in pizzasList
                                 where c2.Name.ToLower().Contains(searchTextBox.Text.ToLower())
                                 orderby c2.Name
                                 select c2).ToList();
@@ -72,7 +72,7 @@ namespace PizzaAdmin
             Pizza selectedContact = (Pizza)contactListView.SelectedItem;
             if (selectedContact != null)
             {
-                ContactDetailWindow contactDetailWindow = new ContactDetailWindow(selectedContact);
+                PizzaDetailWindow contactDetailWindow = new PizzaDetailWindow(selectedContact);
                 contactDetailWindow.ShowDialog();
                 ReadDataBase();
             }

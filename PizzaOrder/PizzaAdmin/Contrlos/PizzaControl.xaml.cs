@@ -20,7 +20,7 @@ namespace PizzaAdmin.Controls
     {
 
 
-        public Pizza Contacts
+        public Pizza Pizzas
         {
             get { return (Pizza)GetValue(ContactsProperty); }
             set { SetValue(ContactsProperty, value); }
@@ -36,8 +36,8 @@ namespace PizzaAdmin.Controls
             if (userControl != null)
             {
                 userControl.nameTextBox.Text = (e.NewValue as Pizza).Name;
-                userControl.emailTextBox.Text = (e.NewValue as Pizza).Description;
-                userControl.phoneTextBox.Text = (e.NewValue as Pizza).Ingredients;
+                userControl.descriptionTextBox.Text = (e.NewValue as Pizza).Description;
+                userControl.ingredientsTextBox.Text = (e.NewValue as Pizza).Ingredients;
                 
             }
 

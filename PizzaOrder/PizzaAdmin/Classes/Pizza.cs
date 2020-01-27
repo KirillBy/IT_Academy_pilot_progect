@@ -8,15 +8,14 @@ namespace PizzaAdmin.Classes
 {
     public class Pizza
     {
-        [PrimaryKey, AutoIncrement]
+        //[PrimaryKey, AutoIncrement]
         
         public string Name { get; set; }
         public string Description { get; set; }
         public string Ingredients { get; set; }
         public pizzaSize PizzaSize { get;  set; }
-        public double SmallSize { get;  set; }
-
-        private int myVar;
+        public double SmallPrice { get;  set; }
+        public string PhotoName { get;  set; }
 
 
 

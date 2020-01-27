@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel Margin="10">
-        <Button Content="New Contact"
-                Name="newContactButton"
-                Click="newContactButton_Click"/>
+        <Button Content="Add new pizza"
+                Name="newPizzaButton"
+                Click="newPizzaButton_Click"/>
         <TextBox Margin="0, 5, 0, 0"
                  TextChanged="TextBox_TextChanged"/>
         <ListView x:Name="contactListView"
@@ -19,7 +19,7 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <uc:UserControl1 Contacts="{Binding}"/>
+                    <uc:UserControl1 Pizzas ="{Binding}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="PizzaAdmin.NewPizzaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaAdmin"
+        mc:Ignorable="d"
+        Title="NewPizzaWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+             <TextBlock IsHitTestVisible="False" Text="Enter Name of Pizza Here" Foreground="DarkGray">
+        <TextBlock.Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Visibility" Value="Collapsed"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Text, ElementName=nameTextBox}" Value="">
+                        <Setter Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </TextBlock.Style> 
+ </TextBlock>
+            <TextBox x:Name="nameTextBox" Margin="0,0,0,5"/>
+
+            <TextBlock IsHitTestVisible="False" Text="Enter Desription of Pizza Here" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=descriptionTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBox x:Name="descriptionTextBox" Margin="0,0,0,5"/>
+            <TextBlock IsHitTestVisible="False" Text="Enter Ingredients of Pizza Here" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=ingredientsTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBox x:Name="ingredientsTextBox"  Margin="0,0,0,5"/>
+            <Button x:Name="saveButton" Content="Save"
+                    Click="saveButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

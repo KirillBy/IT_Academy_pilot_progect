@@ -10,9 +10,9 @@
         <StackPanel Margin="5">
             <TextBlock x:Name="nameTextBox" FontSize="20"
                                    FontWeight="Bold"/>
-            <TextBlock x:Name="emailTextBox" FontSize="15"
+            <TextBlock x:Name="descriptionTextBox" FontSize="15"
                                    Foreground="DodgerBlue"/>
-            <TextBlock x:Name="phoneTextBox" FontSize="15"
+            <TextBlock x:Name="ingredientsTextBox" FontSize="15"
                                    FontStyle="Italic"/>
         </StackPanel>
     </Grid>

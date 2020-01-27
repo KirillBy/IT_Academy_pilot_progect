@@ -16,9 +16,9 @@ namespace PizzaAdmin
     /// <summary>
     /// Interaction logic for NewContactWindow.xaml
     /// </summary>
-    public partial class NewContactWindow : Window
+    public partial class NewPizzaWindow : Window
     {
-        public NewContactWindow()
+        public NewPizzaWindow()
         {
             InitializeComponent();
         }
@@ -28,8 +28,8 @@ namespace PizzaAdmin
             Pizza contacts = new Pizza()
             {
                 Name = nameTextBox.Text,
-                Description = emailTextBox.Text,
-                Ingredients = phoneNumberTextBox.Text
+                Description = descriptionTextBox.Text,
+                Ingredients = ingredientsTextBox.Text
             };
 
             using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))

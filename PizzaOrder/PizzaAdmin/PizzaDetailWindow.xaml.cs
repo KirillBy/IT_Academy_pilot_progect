@@ -15,28 +15,28 @@ namespace PizzaAdmin
     /// <summary>
     /// Interaction logic for ContactDetailWindow.xaml
     /// </summary>
-    public partial class ContactDetailWindow : Window
+    public partial class PizzaDetailWindow : Window
     {
-        Pizza contacts;
-        public ContactDetailWindow(Pizza contacts)
+        Pizza pizzas;
+        public PizzaDetailWindow(Pizza contacts)
         {
 
             InitializeComponent();
-            this.contacts = contacts;
-            nameTextBox.Text = this.contacts.Name;
-            emailTextBox.Text = this.contacts.Description;
-            phoneNumberTextBox.Text = this.contacts.Ingredients;
+            this.pizzas = contacts;
+            nameTextBox.Text = this.pizzas.Name;
+            descriptionTextBox.Text = this.pizzas.Description;
+            ingredientsTextBox.Text = this.pizzas.Ingredients;
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
             using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
             {
-                contacts.Name = nameTextBox.Text;
-                contacts.Description = emailTextBox.Text;
-                contacts.Ingredients = phoneNumberTextBox.Text;
+                pizzas.Name = nameTextBox.Text;
+                pizzas.Description = descriptionTextBox.Text;
+                pizzas.Ingredients = ingredientsTextBox.Text;
                 connection.CreateTable<Pizza>();
-                connection.Update(contacts);
+                connection.Update(pizzas);
                 this.Close();
             }
         }
@@ -47,7 +47,7 @@ namespace PizzaAdmin
             {
 
                 connection.CreateTable<Pizza>();
-                connection.Delete(contacts);
+                connection.Delete(pizzas);
                 this.Close();
             }
         }
