@@ -7,21 +7,25 @@
         xmlns:uc ="clr-namespace:PizzaAdmin.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <ScrollViewer >
     <StackPanel Margin="10">
-        <Button Content="Add new pizza"
+        <Button Content="Add new pizza" Background="YellowGreen"
                 Name="newPizzaButton"
                 Click="newPizzaButton_Click"/>
         <TextBox Margin="0, 5, 0, 0"
                  TextChanged="TextBox_TextChanged"/>
-        <ListView x:Name="contactListView"
-                  Margin="0,5,0,0" Height ="300" 
-                  SelectionChanged="contactListView_SelectionChanged">
+        
+        <ListView x:Name="pizzaListView"
+                  Margin="0,5,0,0" Height ="Auto"  
+                  SelectionChanged="pizzaListView_SelectionChanged">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <uc:UserControl1 Pizzas ="{Binding}"/>
+                    <uc:UserControl1 Pizza ="{Binding}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
     </StackPanel>
+    </ScrollViewer>
 </Window>

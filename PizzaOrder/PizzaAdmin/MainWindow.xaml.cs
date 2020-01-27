@@ -52,7 +52,7 @@ namespace PizzaAdmin
                 //    {
                 //        Content = c
                 //    }) ;
-                contactListView.ItemsSource = pizzasList;
+                pizzaListView.ItemsSource = pizzasList;
             }
         }
 
@@ -64,16 +64,16 @@ namespace PizzaAdmin
                                 where c2.Name.ToLower().Contains(searchTextBox.Text.ToLower())
                                 orderby c2.Name
                                 select c2).ToList();
-            contactListView.ItemsSource = filteredName;
+            pizzaListView.ItemsSource = filteredName;
         }
 
-        private void contactListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void pizzaListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Pizza selectedContact = (Pizza)contactListView.SelectedItem;
-            if (selectedContact != null)
+            Pizza selectedPizza = (Pizza)pizzaListView.SelectedItem;
+            if (selectedPizza != null)
             {
-                PizzaDetailWindow contactDetailWindow = new PizzaDetailWindow(selectedContact);
-                contactDetailWindow.ShowDialog();
+                PizzaDetailWindow pizzaDetailWindow = new PizzaDetailWindow(selectedPizza);
+                pizzaDetailWindow.ShowDialog();
                 ReadDataBase();
             }
         }

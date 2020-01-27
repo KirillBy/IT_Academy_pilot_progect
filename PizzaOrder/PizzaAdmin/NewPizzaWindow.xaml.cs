@@ -23,13 +23,34 @@ namespace PizzaAdmin
             InitializeComponent();
         }
 
+        string pictureName;
+        private void pictureChoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.Filter = "Picture (*.png)|*.png";
+            dialog.FilterIndex = 2;
+
+            Nullable<bool> result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                // Open document
+                pictureName = dialog.FileName;
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(pictureName);
+                bitmap.EndInit();
+                ImageViewer1.Source = bitmap;
+            }
+        }
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             Pizza contacts = new Pizza()
             {
                 Name = nameTextBox.Text,
                 Description = descriptionTextBox.Text,
-                Ingredients = ingredientsTextBox.Text
+                Ingredients = ingredientsTextBox.Text,
+                PhotoAdress = pictureName
             };
 
             using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))

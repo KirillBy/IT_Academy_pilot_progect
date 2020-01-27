@@ -18,28 +18,25 @@ namespace PizzaAdmin
     public partial class PizzaDetailWindow : Window
     {
         Pizza pizzas;
-        public PizzaDetailWindow(Pizza contacts)
+        string pictureAdress;
+        public PizzaDetailWindow(Pizza pizza)
         {
 
             InitializeComponent();
-            this.pizzas = contacts;
+            this.pizzas = pizza;
             nameTextBox.Text = this.pizzas.Name;
             descriptionTextBox.Text = this.pizzas.Description;
             ingredientsTextBox.Text = this.pizzas.Ingredients;
+            pictureAdress = this.pizzas.PhotoAdress;
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(pictureAdress);
+            bitmap.EndInit();
+            ImageViewerUpdate.Source = bitmap;
         }
 
-        private void updateButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
-            {
-                pizzas.Name = nameTextBox.Text;
-                pizzas.Description = descriptionTextBox.Text;
-                pizzas.Ingredients = ingredientsTextBox.Text;
-                connection.CreateTable<Pizza>();
-                connection.Update(pizzas);
-                this.Close();
-            }
-        }
+        
+
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -48,6 +45,40 @@ namespace PizzaAdmin
 
                 connection.CreateTable<Pizza>();
                 connection.Delete(pizzas);
+                this.Close();
+            }
+        }
+
+        
+        private void pictureChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.Filter = "Picture (*.png)|*.png";
+            dialog.FilterIndex = 2;
+
+            Nullable<bool> result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                // Open document
+                pictureAdress = dialog.FileName;
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(pictureAdress);
+                bitmap.EndInit();
+                ImageViewerUpdate.Source = bitmap;
+            }
+        }
+        private void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
+            {
+                pizzas.Name = nameTextBox.Text;
+                pizzas.Description = descriptionTextBox.Text;
+                pizzas.Ingredients = ingredientsTextBox.Text;
+                pizzas.PhotoAdress = pictureAdress;
+                connection.CreateTable<Pizza>();
+                connection.Update(pizzas);
                 this.Close();
             }
         }

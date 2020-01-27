@@ -48,8 +48,15 @@
                 </TextBlock.Style>
             </TextBlock>
             <TextBox x:Name="ingredientsTextBox"  Margin="0,0,0,5"/>
-            <Button x:Name="saveButton" Content="Save"
+            <Button x:Name="pictureChoiceButton" Content="Choice Picture of Pizza" Margin="0,0,0,5"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black"
+                    BorderThickness="2"
+                    Click="pictureChoiceButton_Click"/>
+            <Button x:Name="saveButton" Content="Save"  Background="YellowGreen"
                     Click="saveButton_Click"/>
+            <Image Name="ImageViewer1" Height="200" Width="200" Margin="0,0,0,5"
+                   HorizontalAlignment="Left"/>
+            
         </StackPanel>
     </Grid>
 </Window>

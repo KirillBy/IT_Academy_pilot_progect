@@ -14,21 +14,21 @@ using PizzaAdmin;
 namespace PizzaAdmin.Controls
 {
     /// <summary>
-    /// Interaction logic for ContactControl.xaml
+    /// Interaction logic for PizzaControl.xaml
     /// </summary>
     public partial class UserControl1 : UserControl
     {
 
 
-        public Pizza Pizzas
+        public Pizza Pizza
         {
-            get { return (Pizza)GetValue(ContactsProperty); }
-            set { SetValue(ContactsProperty, value); }
+            get { return (Pizza)GetValue(PizzaProperty); }
+            set { SetValue(PizzaProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for contacts.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ContactsProperty =
-            DependencyProperty.Register("Contacts", typeof(Pizza), typeof(UserControl1), new PropertyMetadata(null, SetText));
+        public static readonly DependencyProperty PizzaProperty =
+            DependencyProperty.Register("Pizza", typeof(Pizza), typeof(UserControl1), new PropertyMetadata(null, SetText));
 
         private static void SetText(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -38,7 +38,12 @@ namespace PizzaAdmin.Controls
                 userControl.nameTextBox.Text = (e.NewValue as Pizza).Name;
                 userControl.descriptionTextBox.Text = (e.NewValue as Pizza).Description;
                 userControl.ingredientsTextBox.Text = (e.NewValue as Pizza).Ingredients;
-                
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri((e.NewValue as Pizza).PhotoAdress);
+                bitmap.EndInit();
+                userControl.ImageViewer2.Source = bitmap;
+
             }
 
 
