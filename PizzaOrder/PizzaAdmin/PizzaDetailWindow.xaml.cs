@@ -18,7 +18,7 @@ namespace PizzaAdmin
     public partial class PizzaDetailWindow : Window
     {
         Pizza pizzas;
-        string pictureAdress;
+        string pictureAdress = "Unfilled";
         public PizzaDetailWindow(Pizza pizza)
         {
 
@@ -27,6 +27,7 @@ namespace PizzaAdmin
             nameTextBox.Text = this.pizzas.Name;
             descriptionTextBox.Text = this.pizzas.Description;
             ingredientsTextBox.Text = this.pizzas.Ingredients;
+            priceTextBox.Text = this.pizzas.SmallPrice.ToString();
             pictureAdress = this.pizzas.PhotoAdress;
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
@@ -34,9 +35,6 @@ namespace PizzaAdmin
             bitmap.EndInit();
             ImageViewerUpdate.Source = bitmap;
         }
-
-        
-
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,15 +69,31 @@ namespace PizzaAdmin
         }
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
+            double priceOfPizza;
+            bool correctFill = true;
+            if (!double.TryParse(priceTextBox.Text, out priceOfPizza))
             {
-                pizzas.Name = nameTextBox.Text;
-                pizzas.Description = descriptionTextBox.Text;
-                pizzas.Ingredients = ingredientsTextBox.Text;
-                pizzas.PhotoAdress = pictureAdress;
-                connection.CreateTable<Pizza>();
-                connection.Update(pizzas);
-                this.Close();
+                MessageBox.Show("Incorrect price choisen");
+                correctFill = false;
+            }
+            if (pictureAdress.Equals("Unfilled"))
+            {
+                MessageBox.Show("Picture hasn't been choisen");
+                correctFill = false;
+            }
+            if (correctFill)
+            {
+                using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
+                {
+                    pizzas.Name = nameTextBox.Text;
+                    pizzas.Description = descriptionTextBox.Text;
+                    pizzas.Ingredients = ingredientsTextBox.Text;
+                    pizzas.PhotoAdress = pictureAdress;
+                    pizzas.SmallPrice = priceOfPizza;
+                    connection.CreateTable<Pizza>();
+                    connection.Update(pizzas);
+                    this.Close();
+                }
             }
         }
     }

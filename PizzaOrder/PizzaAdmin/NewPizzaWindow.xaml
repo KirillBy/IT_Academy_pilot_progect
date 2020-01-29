@@ -48,6 +48,20 @@
                 </TextBlock.Style>
             </TextBlock>
             <TextBox x:Name="ingredientsTextBox"  Margin="0,0,0,5"/>
+
+            <TextBlock IsHitTestVisible="False" Text="Enter Price ($USD) of Pizza Here" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=priceTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBox x:Name="priceTextBox" Margin="0,0,0,5"/>
             <Button x:Name="pictureChoiceButton" Content="Choice Picture of Pizza" Margin="0,0,0,5"
                     HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black"
                     BorderThickness="2"

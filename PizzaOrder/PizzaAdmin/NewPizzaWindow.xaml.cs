@@ -23,7 +23,9 @@ namespace PizzaAdmin
             InitializeComponent();
         }
 
-        string pictureName;
+        string pictureName = "Unfilled";
+        
+
         private void pictureChoiceButton_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
@@ -45,21 +47,38 @@ namespace PizzaAdmin
         }
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            Pizza contacts = new Pizza()
+            double priceOfPizza;
+            bool correctFill = true;
+            if(!double.TryParse(priceTextBox.Text, out priceOfPizza))
+                {
+                MessageBox.Show("Incorrect price choisen");
+                correctFill = false;
+                }
+            if(pictureName.Equals("Unfilled"))
             {
-                Name = nameTextBox.Text,
-                Description = descriptionTextBox.Text,
-                Ingredients = ingredientsTextBox.Text,
-                PhotoAdress = pictureName
-            };
-
-            using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
-            {
-                connection.CreateTable<Pizza>();
-                connection.Insert(contacts);
+                MessageBox.Show("Picture hasn't been choisen");
+                correctFill = false;
             }
+            if (correctFill)
+            {
+                Pizza contacts = new Pizza()
+                {
+                    Name = nameTextBox.Text,
+                    Description = descriptionTextBox.Text,
+                    Ingredients = ingredientsTextBox.Text,
+                    PhotoAdress = pictureName,
+                    SmallPrice = priceOfPizza
 
-            this.Close();
+                };
+
+                using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
+                {
+                    connection.CreateTable<Pizza>();
+                    connection.Insert(contacts);
+                }
+
+                this.Close();
+            }
         }
     }
 }

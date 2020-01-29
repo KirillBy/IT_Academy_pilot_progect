@@ -14,6 +14,8 @@
                      Margin="0,0,0,5"/>
             <TextBox x:Name="ingredientsTextBox"
                      Margin="0,0,0,5"/>
+            <TextBox x:Name="priceTextBox"
+                     Margin="0,0,0,5"/>
             
             <Button x:Name="pictureChangeButton" Content="Change Picture of Pizza" Margin="0,0,0,5"
                     HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black"

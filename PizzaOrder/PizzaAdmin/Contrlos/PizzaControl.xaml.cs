@@ -38,11 +38,13 @@ namespace PizzaAdmin.Controls
                 userControl.nameTextBox.Text = (e.NewValue as Pizza).Name;
                 userControl.descriptionTextBox.Text = (e.NewValue as Pizza).Description;
                 userControl.ingredientsTextBox.Text = (e.NewValue as Pizza).Ingredients;
+                userControl.priceTextBox.Text = (e.NewValue as Pizza).SmallPrice.ToString() + "$";
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri((e.NewValue as Pizza).PhotoAdress);
                 bitmap.EndInit();
                 userControl.ImageViewer2.Source = bitmap;
+                
 
             }
 
