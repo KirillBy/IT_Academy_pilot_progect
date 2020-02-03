@@ -17,7 +17,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ModelView\" />
+    <PackageReference Include="C1.Xaml.WPF.Carousel" Version="4.5.20193.685" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PizzaAdmin\PizzaAdmin.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FluidKit">
+      <HintPath>..\..\..\..\Users\Admin\Downloads\fluidkit (1)\sourceCode\sourceCode\FluidKit\bin\Debug\FluidKit.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit">
+      <HintPath>..\..\..\..\Users\Admin\Downloads\fluidkit (1)\sourceCode\sourceCode\Libs\WPFToolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

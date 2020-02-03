@@ -13,5 +13,10 @@ namespace PizzaOrder
     /// </summary>
     public partial class App : Application
     {
+        static string databaseName = "PIZZACOLLECTION.db";
+        static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static string databasePath = System.IO.Path.Combine(folderPath, databaseName);
+        public const double MIDDLEPRICERATE = 1.25;
+        public const double FAMILYPRICERATE = 1.4;
     }
 }

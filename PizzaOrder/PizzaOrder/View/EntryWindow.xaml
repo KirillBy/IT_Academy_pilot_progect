@@ -32,7 +32,7 @@
                Source="\Resourсes\BBQ.png" HorizontalAlignment="Left"  >
             <Image.ToolTip>
                 <ToolTip Style = "{StaticResource ImageToolTip}">
-                        <Image Source="\Resourсes\BBQ.png" />
+                    <Image Source="\Resourсes\BBQ.png" />
                 </ToolTip>
             </Image.ToolTip>
         </Image>
