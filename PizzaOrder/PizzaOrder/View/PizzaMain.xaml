@@ -7,16 +7,16 @@
         xmlns:uc ="clr-namespace:PizzaView.Controls"
         xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
         mc:Ignorable="d"
-        Title="PizzaMain" WindowState="Maximized"
+        Title="PizzaMain" WindowState="Maximized" 
         Background="CornflowerBlue">
     <Window.Resources>
         <ItemsPanelTemplate  x:Key="carouselPanelTemplate" >
-            <c1:C1CarouselPanel   Padding="0, 10, 50, 50" VerticalPathAlignment="Center" HorizontalItemAnchorOnPath="Center" VerticalItemAnchorOnPath="Center" />
+            <c1:C1CarouselPanel   Padding="0, 10, 50, 50" VerticalPathAlignment="Center" HorizontalItemAnchorOnPath="Center" VerticalItemAnchorOnPath="Center"  />
         </ItemsPanelTemplate>
 
         <Style  TargetType="ListView">
             <Setter Property="c1:C1CarouselPanel.PathGeometry" Value="F1 M 164.564,73.0518C 201.647,164.183 238.73,255.315 284.817,323.23C 330.903,391.146 385.993,435.845 445.921,431.137C 505.849,426.43 570.614,372.315 614.53,304.361C 658.446,236.407 681.512,154.614 704.578,72.8207" />
-            <Setter Property="c1:C1CarouselPanel.HorizontalPathAlignment" Value="Left" />
+            <Setter Property="c1:C1CarouselPanel.HorizontalPathAlignment" Value="Center" />
             <Setter Property="c1:C1CarouselPanel.VerticalPathAlignment" Value="Top" />
             <Setter Property="c1:C1CarouselPanel.PerspectiveAngle" Value="90" />
             <Setter Property="c1:C1CarouselPanel.PerspectiveFactor" Value="-0.317" />
@@ -50,19 +50,26 @@
     </Window.Resources>
     
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="PizzaNameTextBlock" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <Image x:Name="MainImage" Grid.Row="1" Grid.Column="0" Height="400" Width="400"  />
+        <ListView Grid.Row="2" Grid.ColumnSpan="3" x:Name="pizzaListView"  Background="Transparent"   ItemsPanel="{StaticResource carouselPanelTemplate}"
+                 BorderThickness="0"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" SelectionChanged="pizzaListView_SelectionChanged" >
 
-
-
-        <ListView  x:Name="pizzaListView"  Background="Transparent"   ItemsPanel="{StaticResource carouselPanelTemplate}"
-                 BorderThickness="0"  HorizontalContentAlignment="Center" HorizontalAlignment="Center"
-                  SelectionChanged="pizzaListView_SelectionChanged">
-
-                    <ListView.ItemTemplate >
-                        <DataTemplate>
-                            <uc:UserControl1 Pizza ="{Binding}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <uc:UserControl1 Pizza ="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>

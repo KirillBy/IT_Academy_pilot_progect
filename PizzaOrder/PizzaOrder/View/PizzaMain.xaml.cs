@@ -21,11 +21,13 @@ namespace PizzaOrder.View
     public partial class PizzaMain : Window
     {
         List<Pizza> pizzasList;
+        Pizza selectedPizza;
         public PizzaMain()
         {
-            
+             
             InitializeComponent();
             pizzasList = new List<Pizza>();
+            selectedPizza = new Pizza();
             ReadDataBase();
         }
         void ReadDataBase()
@@ -45,28 +47,29 @@ namespace PizzaOrder.View
                 //    }) ;
                 pizzaListView.ItemsSource = pizzasList;
             }
-        }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox searchTextBox = sender as TextBox;
-            //var filteredName = contacts.Where(c => c.Name.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
-            var filteredName = (from c2 in pizzasList
-                                where c2.Name.ToLower().Contains(searchTextBox.Text.ToLower())
-                                orderby c2.Name
-                                select c2).ToList();
-            pizzaListView.ItemsSource = filteredName;
+            
+            
         }
 
         private void pizzaListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Pizza selectedPizza = (Pizza)pizzaListView.SelectedItem;
-            //if (selectedPizza != null)
-            //{
-            //    PizzaDetailWindow pizzaDetailWindow = new PizzaDetailWindow(selectedPizza);
-            //    pizzaDetailWindow.ShowDialog();
-            //    ReadDataBase();
-            //}
+            string selectedItem = pizzaListView.SelectedItem?.ToString();
+            foreach (var item in pizzasList)
+            {
+                if (item.Name == selectedItem)
+                    selectedPizza = item;
+            }
+            if(selectedPizza != null)
+            {
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri((selectedPizza).PhotoAdress);
+            bitmap.EndInit();
+            MainImage.Source = bitmap;
+                PizzaNameTextBlock.Text = selectedPizza.Name;
+            }
+           
         }
     }
 }

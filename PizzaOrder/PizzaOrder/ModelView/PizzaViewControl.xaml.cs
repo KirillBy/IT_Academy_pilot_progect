@@ -19,7 +19,6 @@ namespace PizzaView.Controls
     public partial class UserControl1 : UserControl
     {
 
-
         public Pizza Pizza
         {
             get { return (Pizza)GetValue(PizzaProperty); }

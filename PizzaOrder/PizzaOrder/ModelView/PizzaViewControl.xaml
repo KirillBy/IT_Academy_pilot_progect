@@ -7,7 +7,7 @@
              
         mc:Ignorable="d"
        d:DesignHeight="200" d:DesignWidth="300" Background="Transparent">
-    <Grid Background="Transparent">
+    <Grid Background="Transparent"  >
         
         <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -21,7 +21,7 @@
                                    FontWeight="Bold" />
         <TextBlock x:Name="priceTextBox" FontSize="20" Grid.Column="2"
                                    FontStyle="Italic" Margin="0,0,15,0"/>-->
-        <Image Name="ImageViewer2" Height="200" Width="200" Margin="0,0,0,15"
-                  HorizontalAlignment="Left"/>
+        <Image Name="ImageViewer2" Height="200" Width="200" 
+                  HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>
