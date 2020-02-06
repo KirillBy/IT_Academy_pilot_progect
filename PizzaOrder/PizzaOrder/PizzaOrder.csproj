@@ -29,6 +29,9 @@
     <Reference Include="FluidKit">
       <HintPath>..\..\..\..\Users\Admin\Downloads\fluidkit (1)\sourceCode\sourceCode\FluidKit\bin\Debug\FluidKit.dll</HintPath>
     </Reference>
+    <Reference Include="PizzaAdmin">
+      <HintPath>..\PizzaAdmin\bin\Debug\netcoreapp3.1\PizzaAdmin.dll</HintPath>
+    </Reference>
     <Reference Include="WPFToolkit">
       <HintPath>..\..\..\..\Users\Admin\Downloads\fluidkit (1)\sourceCode\sourceCode\Libs\WPFToolkit.dll</HintPath>
     </Reference>

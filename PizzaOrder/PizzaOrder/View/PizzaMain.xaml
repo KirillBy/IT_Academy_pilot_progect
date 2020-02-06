@@ -25,7 +25,7 @@
         <Style TargetType="ListViewItem" >
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="ListBoxItem">
+                    <ControlTemplate TargetType="ListViewItem">
                         <Border Name="_Border"
                                 Padding="2"
                                 SnapsToDevicePixels="true">
@@ -60,9 +60,25 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="PizzaNameTextBlock" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="PizzaNameTextBlock" FontSize="56" FontWeight="ExtraBlack" 
+                   HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+        <TextBlock x:Name="PizzaDescriptionTextBlock" FontSize="26" FontWeight="ExtraBlack" TextWrapping="Wrap"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="ChoicePizzaButton" Content="SELECT" Grid.Row="0" Grid.Column="2" Height="50" Width="100"
+                Background="YellowGreen" BorderThickness="3" BorderBrush="Black" 
+                Visibility="Hidden" Click="ChoicePizzaButton_Click"/>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="PizzaIngredientsTextBlock" FontSize="26" FontWeight="ExtraBlack" TextWrapping="Wrap"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" />
+            <TextBlock x:Name="PizzaPriceTextBlock" FontSize="26" FontWeight="ExtraBlack" TextWrapping="Wrap"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" />
+        </Grid>
         <Image x:Name="MainImage" Grid.Row="1" Grid.Column="0" Height="400" Width="400"  />
-        <ListView Grid.Row="2" Grid.ColumnSpan="3" x:Name="pizzaListView"  Background="Transparent"   ItemsPanel="{StaticResource carouselPanelTemplate}"
+        <ListView  Grid.Row="2" Grid.ColumnSpan="3" x:Name="pizzaListView"  Background="Transparent"   ItemsPanel="{StaticResource carouselPanelTemplate}"
                  BorderThickness="0"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" SelectionChanged="pizzaListView_SelectionChanged" >
 
             <ListView.ItemTemplate>

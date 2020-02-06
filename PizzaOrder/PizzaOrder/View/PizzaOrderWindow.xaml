@@ -1,0 +1,45 @@
+﻿<Window x:Class="PizzaOrder.View.PizzaOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaOrder.View"
+        mc:Ignorable="d"
+        Title="PizzaOrderWindow" Height="450" Width="800"
+        Background="CornflowerBlue">
+   
+   
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="OrderPizzaImage" Grid.Column="0" Grid.RowSpan="5"
+               Height="250" Width="250"/>
+        <TextBlock x:Name="OrderPizzaName" Grid.Column="1" Grid.Row="0"
+                   FontSize="56" VerticalAlignment="Center" FontWeight="ExtraBlack"/>
+        <ComboBox Name="OrderPizzaSize" Grid.Column="1" Grid.Row="1" Background="CornflowerBlue"
+                  Height="30" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center"
+                  IsEditable="True" FontSize="20">
+            <ComboBox.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="CornflowerBlue" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="CornflowerBlue" />
+            </ComboBox.Resources>
+        </ComboBox>
+        <ComboBox Name="OrderPizzaCount" Grid.Column="1" Grid.Row="2" Background="CornflowerBlue"
+                  Height="30" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"
+                  IsEditable="True" FontSize="20">
+            <ComboBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="CornflowerBlue" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="CornflowerBlue" />
+            </ComboBox.Resources>
+        </ComboBox>
+    </Grid>
+</Window>

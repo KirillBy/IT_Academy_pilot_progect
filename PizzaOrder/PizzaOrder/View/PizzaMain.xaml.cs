@@ -18,16 +18,17 @@ namespace PizzaOrder.View
     /// <summary>
     /// Interaction logic for PizzaMain.xaml
     /// </summary>
+    
     public partial class PizzaMain : Window
     {
         List<Pizza> pizzasList;
-        Pizza selectedPizza;
+        public static Pizza selectedPizza;
         public PizzaMain()
         {
-             
-            InitializeComponent();
-            pizzasList = new List<Pizza>();
+             pizzasList = new List<Pizza>();
             selectedPizza = new Pizza();
+            InitializeComponent();
+            
             ReadDataBase();
         }
         void ReadDataBase()
@@ -54,12 +55,14 @@ namespace PizzaOrder.View
 
         private void pizzaListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string selectedItem = pizzaListView.SelectedItem?.ToString();
-            foreach (var item in pizzasList)
+            ChoicePizzaButton.Visibility = Visibility.Visible;
+            if(pizzaListView.SelectedItem != null)
             {
-                if (item.Name == selectedItem)
-                    selectedPizza = item;
+             string selectedItem = pizzaListView.SelectedItem?.ToString();
+            selectedPizza = pizzasList.FirstOrDefault(Pizza => selectedItem == Pizza.Name);
             }
+            
+           
             if(selectedPizza != null)
             {
             BitmapImage bitmap = new BitmapImage();
@@ -68,8 +71,19 @@ namespace PizzaOrder.View
             bitmap.EndInit();
             MainImage.Source = bitmap;
                 PizzaNameTextBlock.Text = selectedPizza.Name;
+                PizzaDescriptionTextBlock.Text = "Desription:\n" + selectedPizza.Description;
+                PizzaIngredientsTextBlock.Text = "Ingredients:\n" + selectedPizza.Ingredients;
+                PizzaPriceTextBlock.Text = "Small: " + selectedPizza.SmallPrice + " $\n" +
+                    "Medium: " + Math.Round(selectedPizza.SmallPrice * Pizza.MiddleRate,2) + " $\n" +
+                    "Big: " + Math.Round(selectedPizza.SmallPrice * Pizza.BigRate,2) + " $\n";
             }
            
+        }
+
+        private void ChoicePizzaButton_Click(object sender, RoutedEventArgs e)
+        {
+            PizzaOrderWindow pizzaOrderWindow = new PizzaOrderWindow();
+            pizzaOrderWindow.ShowDialog();
         }
     }
 }
