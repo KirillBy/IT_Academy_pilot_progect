@@ -1,4 +1,5 @@
 ﻿using PizzaAdmin.Classes;
+using PizzaOrder.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -55,6 +56,10 @@ namespace PizzaView.Controls
             InitializeComponent();
         }
 
-
+        private void ImageViewer2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            PizzaOrderWindow pizzaOrderWindow = new PizzaOrderWindow();
+            pizzaOrderWindow.ShowDialog();
+        }
     }
 }

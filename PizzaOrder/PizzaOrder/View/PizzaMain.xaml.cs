@@ -12,7 +12,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SQLite;
 using System.Linq;
-
+using PizzaOrder.Models;
+using PizzaOrder.ModelView;
+using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
+using PizzaOrder.Logger;
 namespace PizzaOrder.View
 {
     /// <summary>
@@ -23,17 +27,37 @@ namespace PizzaOrder.View
     {
         List<Pizza> pizzasList;
         public static Pizza selectedPizza;
+        public static ObservableCollection<Order> ordersList;
+        public string UserEmail = null;
         public PizzaMain()
         {
-             pizzasList = new List<Pizza>();
+            ordersList = new ObservableCollection<Order>();
+            pizzasList = new List<Pizza>();
             selectedPizza = new Pizza();
             InitializeComponent();
-            
+            Logger.Logger.InitLogger();
+            Logger.Logger.Log.Info("App has been started");
             ReadDataBase();
+            ReadOrders();
+        }
+        private  double _totalPrice;
+
+        public  double TotalPrice
+        {
+            get { return _totalPrice; }
+            set { _totalPrice = value; TotalPriceTextBlock.Text = "Total: " + value + " $"; }
+        }
+
+        void ReadOrders()
+        {
+            if (PizzaMain.ordersList != null)
+            {
+                OrderListView.ItemsSource = PizzaMain.ordersList;
+                TotalPrice = PizzaMain.ordersList.Sum(_ => _.SummOfPizza);
+            }
         }
         void ReadDataBase()
         {
-
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.databasePath))
             {
                 conn.CreateTable<Pizza>();
@@ -41,27 +65,17 @@ namespace PizzaOrder.View
             }
             if (pizzasList != null)
             {
-                //foreach (var c in contacts)
-                //    contactListView.Items.Add(new ListViewItem()
-                //    {
-                //        Content = c
-                //    }) ;
                 pizzaListView.ItemsSource = pizzasList;
             }
-
-            
-            
         }
 
         private void pizzaListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ChoicePizzaButton.Visibility = Visibility.Visible;
             if(pizzaListView.SelectedItem != null)
             {
              string selectedItem = pizzaListView.SelectedItem?.ToString();
             selectedPizza = pizzasList.FirstOrDefault(Pizza => selectedItem == Pizza.Name);
             }
-            
            
             if(selectedPizza != null)
             {
@@ -74,16 +88,35 @@ namespace PizzaOrder.View
                 PizzaDescriptionTextBlock.Text = "Desription:\n" + selectedPizza.Description;
                 PizzaIngredientsTextBlock.Text = "Ingredients:\n" + selectedPizza.Ingredients;
                 PizzaPriceTextBlock.Text = "Small: " + selectedPizza.SmallPrice + " $\n" +
-                    "Medium: " + Math.Round(selectedPizza.SmallPrice * Pizza.MiddleRate,2) + " $\n" +
-                    "Big: " + Math.Round(selectedPizza.SmallPrice * Pizza.BigRate,2) + " $\n";
+                    "Medium: " + selectedPizza.MiddlePrice + " $\n" +
+                    "Big: " + selectedPizza.BigPrice + " $\n";
             }
-           
         }
 
-        private void ChoicePizzaButton_Click(object sender, RoutedEventArgs e)
+        private void FinalOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            PizzaOrderWindow pizzaOrderWindow = new PizzaOrderWindow();
-            pizzaOrderWindow.ShowDialog();
+            UserEmail = UserEmailTextBox.Text;
+            if(isValid(UserEmail))
+            {
+                SendEmail sendEmail = new SendEmail();
+                sendEmail.Send(UserEmail);
+                UserEmail = null;
+                UserEmailTextBox.Text = null;
+
+            }
+            else { MessageBox.Show("Incorrect Email. Please Check it"); 
+                Logger.Logger.Log.Error("Incorrect email is entered by user"); }
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            TotalPrice = PizzaMain.ordersList.Sum(_ => _.SummOfPizza);
+        }
+        bool isValid(string email)
+        {
+            string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
+            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+            return isMatch.Success;
         }
     }
 }

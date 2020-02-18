@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaOrder.View"
         xmlns:uc ="clr-namespace:PizzaView.Controls"
+        xmlns:uc1 ="clr-namespace:PizzaOrder.ModelView"
         xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml"
         mc:Ignorable="d"
         Title="PizzaMain" WindowState="Maximized" 
-        Background="CornflowerBlue">
+        Background="CornflowerBlue" MouseMove="Window_MouseMove">
     <Window.Resources>
         <ItemsPanelTemplate  x:Key="carouselPanelTemplate" >
             <c1:C1CarouselPanel   Padding="0, 10, 50, 50" VerticalPathAlignment="Center" HorizontalItemAnchorOnPath="Center" VerticalItemAnchorOnPath="Center"  />
@@ -61,12 +62,9 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="PizzaNameTextBlock" FontSize="56" FontWeight="ExtraBlack" 
-                   HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
         <TextBlock x:Name="PizzaDescriptionTextBlock" FontSize="26" FontWeight="ExtraBlack" TextWrapping="Wrap"
                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="ChoicePizzaButton" Content="SELECT" Grid.Row="0" Grid.Column="2" Height="50" Width="100"
-                Background="YellowGreen" BorderThickness="3" BorderBrush="Black" 
-                Visibility="Hidden" Click="ChoicePizzaButton_Click"/>
         <Grid Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -78,7 +76,7 @@
                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" />
         </Grid>
         <Image x:Name="MainImage" Grid.Row="1" Grid.Column="0" Height="400" Width="400"  />
-        <ListView  Grid.Row="2" Grid.ColumnSpan="3" x:Name="pizzaListView"  Background="Transparent"   ItemsPanel="{StaticResource carouselPanelTemplate}"
+        <ListView  Grid.Row="2" Grid.ColumnSpan="2" x:Name="pizzaListView"  Background="Transparent"   ItemsPanel="{StaticResource carouselPanelTemplate}"
                  BorderThickness="0"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" SelectionChanged="pizzaListView_SelectionChanged" >
 
             <ListView.ItemTemplate>
@@ -87,5 +85,34 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+       
+        <StackPanel Grid.Row="2" Grid.Column="2">
+        <ListView x:Name="OrderListView" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <uc1:OrderControl Order ="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            <TextBlock x:Name="TotalPriceTextBlock" FontSize="36" HorizontalAlignment="Left"/>
+            <TextBlock IsHitTestVisible="False" Text="Enter Your Email Here" Foreground="Black" >
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=UserEmailTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBox x:Name="UserEmailTextBox" Background="Transparent" BorderThickness="3" BorderBrush="Black"/>
+            <Button x:Name="FinalOrderButton" Grid.Column="2" Grid.Row="2" 
+                Click="FinalOrderButton_Click" HorizontalAlignment="Center"
+                VerticalAlignment="Center" Content="ORDER NOW"
+                FontSize="36" Background="LawnGreen" BorderThickness="3"/>
+        </StackPanel>
     </Grid>
 </Window>

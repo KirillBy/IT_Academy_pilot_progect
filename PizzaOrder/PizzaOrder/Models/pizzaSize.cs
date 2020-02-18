@@ -4,6 +4,6 @@
     {
         small = 30,
         middle = 36,
-        family = 40
+        big = 40
     }
 }

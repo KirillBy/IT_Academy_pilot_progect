@@ -7,17 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resourсes\BBQ.png" />
-    <None Remove="Resourсes\California.png" />
-    <None Remove="Resourсes\CheesePepperoni.png" />
-    <None Remove="Resourсes\Hawaii.png" />
-    <None Remove="Resourсes\Margarita.png" />
-    <None Remove="Resourсes\NewYork.png" />
-    <None Remove="Resourсes\Pepperoni.png" />
+    <None Remove="Resourсes\delete.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="{000204ef-0000-0000-c000-000000000046}">
+      <Guid>000204ef-0000-0000-c000-000000000046</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="C1.Xaml.WPF.Carousel" Version="4.5.20193.685" />
+    <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
   </ItemGroup>
 
@@ -38,13 +42,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resourсes\BBQ.png" />
-    <Resource Include="Resourсes\California.png" />
-    <Resource Include="Resourсes\CheesePepperoni.png" />
-    <Resource Include="Resourсes\Hawaii.png" />
-    <Resource Include="Resourсes\Margarita.png" />
-    <Resource Include="Resourсes\NewYork.png" />
-    <Resource Include="Resourсes\Pepperoni.png" />
+    <Resource Include="Resourсes\delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

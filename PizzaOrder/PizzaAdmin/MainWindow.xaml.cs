@@ -32,8 +32,8 @@ namespace PizzaAdmin
 
         private void newPizzaButton_Click(object sender, RoutedEventArgs e)
         {
-            NewPizzaWindow newContactWindow = new NewPizzaWindow();
-            newContactWindow.ShowDialog();
+            NewPizzaWindow newPizzaWindow = new NewPizzaWindow();
+            newPizzaWindow.ShowDialog();
 
             ReadDataBase();
         }
@@ -47,11 +47,6 @@ namespace PizzaAdmin
             }
             if (pizzasList != null)
             {
-                //foreach (var c in contacts)
-                //    contactListView.Items.Add(new ListViewItem()
-                //    {
-                //        Content = c
-                //    }) ;
                 pizzaListView.ItemsSource = pizzasList;
             }
         }
@@ -59,7 +54,6 @@ namespace PizzaAdmin
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox searchTextBox = sender as TextBox;
-            //var filteredName = contacts.Where(c => c.Name.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
             var filteredName = (from c2 in pizzasList
                                 where c2.Name.ToLower().Contains(searchTextBox.Text.ToLower())
                                 orderby c2.Name

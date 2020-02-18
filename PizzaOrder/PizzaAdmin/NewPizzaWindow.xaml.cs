@@ -13,9 +13,7 @@ using System.Windows.Shapes;
 
 namespace PizzaAdmin
 {
-    /// <summary>
-    /// Interaction logic for NewContactWindow.xaml
-    /// </summary>
+
     public partial class NewPizzaWindow : Window
     {
         public NewPizzaWindow()
@@ -61,20 +59,22 @@ namespace PizzaAdmin
             }
             if (correctFill)
             {
-                Pizza contacts = new Pizza()
+                Pizza pizza = new Pizza()
                 {
                     Name = nameTextBox.Text,
                     Description = descriptionTextBox.Text,
                     Ingredients = ingredientsTextBox.Text,
                     PhotoAdress = pictureName,
-                    SmallPrice = priceOfPizza
+                    SmallPrice = priceOfPizza,
+                    MiddlePrice = Math.Round(priceOfPizza * 1.5, 2),
+                    BigPrice = Math.Round(priceOfPizza * 1.9, 2)
 
                 };
 
                 using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
                 {
                     connection.CreateTable<Pizza>();
-                    connection.Insert(contacts);
+                    connection.Insert(pizza);
                 }
 
                 this.Close();

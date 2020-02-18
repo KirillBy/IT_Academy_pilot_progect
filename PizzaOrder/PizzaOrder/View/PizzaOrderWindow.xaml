@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PizzaOrder.View"
         mc:Ignorable="d"
         Title="PizzaOrderWindow" Height="450" Width="800"
-        Background="CornflowerBlue">
+        Background="Aquamarine">
    
    
     <Grid>
@@ -25,21 +25,23 @@
                Height="250" Width="250"/>
         <TextBlock x:Name="OrderPizzaName" Grid.Column="1" Grid.Row="0"
                    FontSize="56" VerticalAlignment="Center" FontWeight="ExtraBlack"/>
-        <ComboBox Name="OrderPizzaSize" Grid.Column="1" Grid.Row="1" Background="CornflowerBlue"
-                  Height="30" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center"
-                  IsEditable="True" FontSize="20">
-            <ComboBox.Resources>
-            <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="CornflowerBlue" />
-            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="CornflowerBlue" />
-            </ComboBox.Resources>
-        </ComboBox>
-        <ComboBox Name="OrderPizzaCount" Grid.Column="1" Grid.Row="2" Background="CornflowerBlue"
-                  Height="30" Width="30" HorizontalAlignment="Right" VerticalAlignment="Center"
-                  IsEditable="True" FontSize="20">
-            <ComboBox.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="CornflowerBlue" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="CornflowerBlue" />
-            </ComboBox.Resources>
-        </ComboBox>
+        <TextBlock x:Name="OrderPizzaSum" Grid.Column="1" Grid.Row="3"
+                   FontSize="56" VerticalAlignment="Center" FontWeight="ExtraBlack"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" >
+            
+        <RadioButton GroupName="size" Content="SMALL SIZE" Checked="SmallRadioButton_Checked" />
+        <RadioButton GroupName="size" Content="MEDIUM SIZE" Checked="MediumRadioButton_Checked" IsChecked="True" />
+        <RadioButton GroupName="size" Content="BIG SIZE" Checked="BigButton_Checked"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" >
+            <RadioButton GroupName="count" Content="1 pizza" Checked="RadioButton_Checked_1" IsChecked="True" />
+            <RadioButton GroupName="count" Content="2 pizzas" Checked="RadioButton_Checked_2" />
+            <RadioButton GroupName="count" Content="3 pizzas" Checked="RadioButton_Checked_3"/>
+            <RadioButton GroupName="count" Content="4 pizzas" Checked="RadioButton_Checked_4" />
+            <RadioButton GroupName="count" Content="5 pizzas" Checked="RadioButton_Checked_5"/>
+        </StackPanel>
+        <Button x:Name="OrderPizzaButton" Content="Order" HorizontalAlignment ="Left" VerticalAlignment="Top"
+                Grid.Column="1" Grid.Row="4" Click="OrderPizzaButton_Click"
+                Height="50" Width="150" FontSize="36" Background="Transparent" BorderThickness="3"/>
     </Grid>
 </Window>
