@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resourсes\delete.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="{000204ef-0000-0000-c000-000000000046}">
+      <Guid>000204ef-0000-0000-c000-000000000046</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="C1.Xaml.WPF.Carousel" Version="4.5.20193.685" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PizzaAdmin\PizzaAdmin.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FluidKit">
+      <HintPath>..\..\..\..\Users\Admin\Downloads\fluidkit (1)\sourceCode\sourceCode\FluidKit\bin\Debug\FluidKit.dll</HintPath>
+    </Reference>
+    <Reference Include="PizzaAdmin">
+      <HintPath>..\PizzaAdmin\bin\Debug\netcoreapp3.1\PizzaAdmin.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit">
+      <HintPath>..\..\..\..\Users\Admin\Downloads\fluidkit (1)\sourceCode\sourceCode\Libs\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resourсes\delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,38 @@
+﻿<Window x:Class="PizzaAdmin.PizzaDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaAdmin"
+        mc:Ignorable="d"
+        Title="PizzaDetailWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBox x:Name="nameTextBox" 
+                     Margin="0,0,0,5"/>
+            <TextBox x:Name="descriptionTextBox" 
+                     Margin="0,0,0,5"/>
+            <TextBox x:Name="ingredientsTextBox"
+                     Margin="0,0,0,5"/>
+            <TextBox x:Name="priceTextBox"
+                     Margin="0,0,0,5"/>
+            
+            <Button x:Name="pictureChangeButton" Content="Change Picture of Pizza" Margin="0,0,0,5"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="Black"
+                    BorderThickness="2"
+                    Click="pictureChangeButton_Click"/>
+            
+            <Button x:Name="updateButton" Content="Update" Background="YellowGreen"
+                    Click="updateButton_Click"
+                    Margin="0,0,0,5"/>
+
+            <Button x:Name="deleteButton" Content="Delete"
+                    Click="deleteButton_Click"
+                    Background="Red" Foreground="White"/>
+            
+            <Image Name="ImageViewerUpdate" Height="200" Width="200" Margin="0,0,0,5"
+                   HorizontalAlignment="Left"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
