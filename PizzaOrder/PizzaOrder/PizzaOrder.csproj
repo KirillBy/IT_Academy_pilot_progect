@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="C1.Xaml.WPF.Carousel" Version="4.5.20193.685" />
-    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="log4net" Version="2.0.10" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
   </ItemGroup>
 
